@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Borrar {% endblock %}
+
+
+{% block contenido %} 
+
+<div class="login-form">
+    <h4 class="text-center">Formulario para borrar</h4> 
+    <form method="POST" class="post-form">{% csrf_token %}
+        <div class="form-group">
+            <div class="form-control">
+                {{ form.as_p }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
