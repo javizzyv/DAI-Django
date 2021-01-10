@@ -4,5 +4,37 @@
 
 
 {% block contenido %} 
-Elige en la barra lateral la acción que quieres hacer sobre los modelos
+
+    {% if exito == 'Si' %}
+
+        <div class="alert alert-success" role="alert">
+            Operacion realizada con exito
+        </div>
+
+    {% endif %}
+
+    {% if not libro == '' %}
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <p><strong>Titulo:</strong> {{ libro.titulo }}</p>
+                <p><strong>Autor:</strong> {{ libro.autor }}</p>
+            </li>
+        </ul>
+
+    {% else %}
+
+        Elige en la barra lateral la acción que quieres hacer sobre los modelos, abajo hay una lista de los libros que hay actualmente:
+
+        <ul class="list-group">
+            {% for libro in libros %}
+                <li class="list-group-item">
+                    <p><strong>Titulo:</strong> {{ libro.titulo }}</p>
+                    <p><strong>Autor:</strong> {{ libro.autor }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
 {% endblock %}

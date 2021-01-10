@@ -20,4 +20,8 @@
     </form>
 </div>
 
+{% if error == 'Not exists' %}
+    <div class="alert alert-danger alert-dismissible fade show">No existe ese libro</div>
+{% endif %}
+
 {% endblock %}
