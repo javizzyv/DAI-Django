@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
+from django.urls import path, include # new
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),    #user: admin, contrasenia: UGRDAIPRACTICAS o DAIUGRPRACTICAS
     url('', include('mi_aplicacion.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

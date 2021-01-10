@@ -56,7 +56,7 @@ ROOT_URLCONF = 'mi_sitio_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR), 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +123,5 @@ STATIC_URL = '/static/'
 
 # al final del archivo settings.py
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+LOGIN_REDIRECT_URL = '/'
