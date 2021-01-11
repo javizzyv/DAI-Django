@@ -37,8 +37,26 @@
                   </li>
 
                   <li class="nav-item active">
-                    <a class="nav-link" href="/formularios">Formularios</a>
+                    <a class="nav-link" href="/formularios">Libros</a>
                   </li>
+
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/prestamos">Prestamos</a>
+                  </li>
+
+                  {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a>
+                    </li>
+
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/signup.html">Sign up</a>
+                    </li>
+                  {% endif %}
                 </ul>
                 <!--<form class="form-inline mt-2 mt-md-0">
                   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -69,6 +87,9 @@
             <div id="page-content-wrapper">
             <div class="container-fluid">
                 <h1 class="mt-4">Contenido</h1>
+                {% if user.is_authenticated %}
+                  <h1>Estas logeado como:<span class="badge badge-secondary"> {{ user.get_username }}</span></h1>
+                {% endif %}
                 {% block contenido %} {% endblock %}
             </div>
             </div>

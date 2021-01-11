@@ -11,5 +11,9 @@ urlpatterns = [
   path('editar', views.editar, name='editar'),
   path('borrar', views.borrar, name='borrar'),
   path('aniadir', views.aniadir, name='aniadir'),
+  path('signup', views.signup, name='signup'),
+  path('prestamos', views.prestamos, name='prestamos'),
+  path('pedir', views.pedir, name='pedir'),
+  path('devolver', views.devolver, name='devolver'),
   path('test_template', views.test_template, name='test_template'),
 ]

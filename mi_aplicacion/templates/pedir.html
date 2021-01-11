@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Pedir {% endblock %}
+
+
+{% block contenido %} 
+
+<div class="login-form">
+    <h4 class="text-center">Formulario para pedir</h4> 
+    <form method="POST" class="post-form">{% csrf_token %}
+        <div class="form-group">
+            <div class="form-control">
+                {{ form.as_p }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+        </div>
+    </form>
+</div>
+
+{% if error == 'Not exists' %}
+    <div class="alert alert-danger alert-dismissible fade show">No existe ese libro/Ya lo tienes</div>
+{% endif %}
+
+{% endblock %}

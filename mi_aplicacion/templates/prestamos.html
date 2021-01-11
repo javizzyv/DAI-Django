@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Tus Prestamos {% endblock %}
+
+
+{% block contenido %} 
+
+    {% if exito == 'Si' %}
+        <div class="alert alert-success" role="alert">
+            Operacion realizada con exito
+        </div>
+    {% endif %}
+    
+
+    {% if user.is_authenticated %}
+        <h3>Tus prestamos son:</h3>
+        {% for prestamo in prestamos %}
+            <li class="list-group-item">
+                <p><strong>Titulo:</strong> {{ prestamo.libro.titulo }}</p>
+                <p><strong>Fecha:</strong> {{ prestamo.fecha }}</p>
+                <!--<p><a href="/devolver" class="list-group-item list-group-item-action bg-light">Devolver</a></p>-->
+                <form action="/devolver"  method="POST" class="post-form">{% csrf_token %}
+                    <input type="hidden" value="{{prestamo.libro.titulo}}" name="libro">
+                    <button type="submit" class="btn btn-primary btn-block">Devolver</button> 
+                </form>
+            </li>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger alert-dismissible fade show">Tienes que estar logeado para realizar esta accion</div>
+    {% endif %}
+    
+    <p><a href="/pedir" class="list-group-item list-group-item-action bg-light">Pedir libro</a></p>
+{% endblock %}
